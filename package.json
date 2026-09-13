@@ -1,0 +1,36 @@
+{
+  "name": "@gravity-tpu/zodiac",
+  "version": "0.1.0",
+  "description": "Deterministic device driver, serial CLI interface, and OpenFlow 1.3 profile for the Northbound Networks Zodiac FX OpenFlow switch",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "zodiac": "./dist/cli.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check-types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "zodiac-fx",
+    "openflow",
+    "sdn",
+    "networking",
+    "serial-cli",
+    "hardware-driver",
+    "agentic-networking"
+  ],
+  "author": "gravity-tpu",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "typescript": "^5.7.3",
+    "vitest": "^4.1.11"
+  }
+}
