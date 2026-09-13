@@ -3,7 +3,8 @@
 > **Deterministic Hardware Driver, Serial CLI Interface & OpenFlow 1.3 Profile**  
 > For the **Northbound Networks Zodiac FX** OpenFlow Hardware Switch.  
 > Governed by the Senior Staff Council Invariants (Scale, Simplicity, Adaptation, Verification).  
-> Upstream Core Architecture: [gravity-tpu/agentic-era-networking](https://github.com/gravity-tpu/agentic-era-networking)
+> Upstream Core Architecture: [gravity-tpu/agentic-era-networking](https://github.com/gravity-tpu/agentic-era-networking)  
+> **Product Roadmap**: [ROADMAP.md](./ROADMAP.md) (Autonomous Edge SDN & Hardware-Accelerated Network Services)
 
 ---
 
@@ -40,7 +41,21 @@ The **Zodiac FX** is a 4-port 10/100 Fast Ethernet OpenFlow switch engineered fo
 
 ---
 
-## 3. Quick Start
+## 3. Autonomous Edge SDN Product Roadmap
+
+We are implementing 6 core edge networking and content delivery services on desktop silicon:
+
+* **[Read Full Roadmap & Specifications](./ROADMAP.md)**
+  1. **Phase 1: Transparent DNS Reverse Proxy Interception** (RFC 1035 UDP wire interception & VIP mapping)
+  2. **Phase 2: Dynamic Multi-Path & Congestion-Aware Routing** (Multi-port path optimization & loop-free DAG proof)
+  3. **Phase 3: Wire-Level Hardware Rate Limiting & Metering** (KSZ8795 8 rate meters in switch hardware)
+  4. **Phase 4: Sub-3ms Edge Anomaly Detection & Threat Mitigation** (Google Coral Edge TPU INT8 coprocessor)
+  5. **Phase 5: Edge Asset Caching & Tag-Based Invalidation Engine** (RAM/SSD ring cache with instant tag purging)
+  6. **Phase 6: Edge Programmable Workers & On-Device ML Inference** (On-device neural tensor inference at wire speeds)
+
+---
+
+## 4. Quick Start
 
 ### Installation
 ```bash
@@ -81,7 +96,7 @@ await driver.setFailstate('secure');
 
 ---
 
-## 4. Hardware Headers & Pinouts
+## 5. Hardware Headers & Pinouts
 
 ### JTAG Debug Header (Atmel-ICE SAM Connector)
 * Pin 1: +3.3V
@@ -103,5 +118,5 @@ await driver.setFailstate('secure');
 
 ---
 
-## 5. License
+## 6. License
 Apache-2.0
