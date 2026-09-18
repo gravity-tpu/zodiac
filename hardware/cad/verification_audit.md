@@ -143,6 +143,6 @@ Measure the exact distance from your board's left edge to the first RJ45 connect
 | User Issue | Resolution |
 |-----------|-----------|
 | Power source and ethernet cables on same side | Fixed: RJ45 on front (−Y), USB on rear (+Y) — opposite faces |
-| Pins not aligning with board holes | Fixed: 2 rear registration pins, 2.8 mm dia, positioned at board corner offsets |
+| Pins not aligning with board holes | Fixed: 4 symmetrical corner registration pins, 2.8 mm dia, at X = ±46.0 mm, Y = ±36.0 mm (4.0 mm corner setback) |
 | Ethernet ports shown as one piece | Fixed: 4 individual cutouts in a loop, not a monolithic opening |
 | Status LED not visible when closed | Fixed: Dedicated aperture + tapered light tunnel in top hood |

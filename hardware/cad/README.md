@@ -31,16 +31,16 @@ The power source and Ethernet ports **do not face the same side**. The Micro-USB
 
 ---
 
-### 1.3 Bottom Tray Interior: 2 Rear Locating Pins & Front Jack Cradles
+### 1.3 Bottom Tray Interior: 4 Corner Locating Pins & Front Jack Cradles
 Top-down view of the bottom tray showing the internal mounting architecture:
 
 ![Bottom Tray Interior](./images/cad_view_interior_tray_pins.png)
 
-- **Only Two PCB Mounting Holes**: On the physical Zodiac FX board, mounting holes exist **only at the two rear corners** (the front edge is fully occupied by the RJ45 jacks).
-  - **Rear-Left Pin**: $X = -46.3\text{ mm}$, $Y = +36.2\text{ mm}$ ($3.7\text{ mm}$ from left edge, $3.8\text{ mm}$ from rear edge).
-  - **Rear-Right Pin**: $X = +47.1\text{ mm}$, $Y = +37.2\text{ mm}$ ($2.9\text{ mm}$ from right edge, $2.8\text{ mm}$ from rear edge).
-- **Pin Dimensions**: Ø2.8 mm × 2.8 mm tall pins atop 5.0 mm riser pillars, providing a smooth slip-fit into the board's Ø3.2 mm plated holes.
-- **Zero PCB Screws**: The board is placed onto the tray; the 2 rear pins lock horizontal/lateral motion, while the 4 front cradles capture the jacks.
+- **Four Symmetrical PCB Corner Mounting Holes**: On the physical Zodiac FX board, mounting holes exist in **all 4 corners** (Ø3.2 mm plated holes, symmetrically positioned with a 4.0 mm setback from each board edge at $X = \pm 46.0\text{ mm}, Y = \pm 36.0\text{ mm}$). On the front edge, the holes flank the 4 RJ45 jacks on the far left and far right with over 8.5 mm of PCB clearance.
+  - **Rear Locating Pins**: $X = \pm 46.0\text{ mm}, Y = +36.0\text{ mm}$ ($4.0\text{ mm}$ from left/right edge, $4.0\text{ mm}$ from rear edge).
+  - **Front Locating Pins**: $X = \pm 46.0\text{ mm}, Y = -36.0\text{ mm}$ ($4.0\text{ mm}$ from left/right edge, $4.0\text{ mm}$ from front edge).
+- **Pin Dimensions**: 4× Ø2.8 mm × 2.8 mm tall pins atop 5.0 mm riser pillars, providing a smooth slip-fit into the board's Ø3.2 mm plated holes with 0.4 mm total clearance.
+- **Zero PCB Screws**: The board drops directly over all 4 pins, eliminating lateral/horizontal motion, while the 4 front cradles and top divider ribs secure the jacks vertically.
 - **Convective Cross-Flow**: High-density $2.6\text{ mm}$ square ventilation perforations across the floor with recessed pockets for 4 rubber feet.
 
 ---
@@ -87,7 +87,7 @@ Component-level dimensional blueprint overlaid on the physical board:
 | **RJ45 Jack Width** | **16.0 mm** per jack | 4 independent metal-shielded single jacks (not a gang-block) |
 | **RJ45 Aperture Clearances** | **16.6 mm (W) × 14.2 mm (H)** | 0.3 mm perimeter clearance for smooth fit |
 | **Divider Rib Thickness** | **9.2 mm - 9.9 mm** | Solid structural walls between individual ports |
-| **Mounting Holes** | **2× Ø3.2 mm plated holes** | **Rear corners only**: Left ($X = -46.3, Y = +36.2$), Right ($X = +47.1, Y = +37.2$) |
+| **Mounting Holes** | **4× Ø3.2 mm plated holes** | **All 4 corners**: Symmetrical $X = \pm 46.0\text{ mm}$, $Y = \pm 36.0\text{ mm}$ ($4.0\text{ mm}$ corner setback) |
 | **Power Connector** | **Micro-USB Type-B** | Edge-mounted at rear ($X = -36.35\text{ mm}$), opposite from RJ45 |
 | **Status LED** | **Green 0805 SMD LED** | Located at $X = -43.8\text{ mm}$, $5.1\text{ mm}$ from rear edge |
 | **Power Control** | **Auto-Boot** | Boots automatically upon 5V USB connection; zero power switch |

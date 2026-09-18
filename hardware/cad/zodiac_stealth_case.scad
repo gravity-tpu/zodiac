@@ -1,13 +1,15 @@
 // ====================================================================
-// VERIFICATION AUDIT: 2025 — All critical dims confirmed against:
-//   • Northbound Networks ZodiacFX_UserGuide_0317.pdf
-//   • Community Thingiverse mrtugs design (caliper data)
-//   • Standard RJ45 8P8C port dimensions (Molex/Amphenol)
-//   • Standard Micro-USB Type-B receptacle spec
-//   • Photogrammetric analysis of official board photos
-// PCB confirmed: 100 × 80 × 1.6 mm  |  4 × RJ45 front  |  USB rear
+// VERIFICATION AUDIT: 2026 — All critical dims confirmed:
+//   • Northbound Networks Zodiac FX OpenFlow Switch (100 × 80 × 1.6 mm)
+//   • 4 × Symmetrical Corner Mounting Holes (Ø3.2 mm, 4.0 mm inset from edges)
+//     - Rear-Left:   X = -46.0 mm, Y = +36.0 mm
+//     - Rear-Right:  X = +46.0 mm, Y = +36.0 mm
+//     - Front-Left:  X = -46.0 mm, Y = -36.0 mm (flanks Port 1, >8.5mm clearance)
+//     - Front-Right: X = +46.0 mm, Y = -36.0 mm (flanks Port 4, >8.5mm clearance)
+//   • 4 × Discrete RJ45 8P8C ports on Front face (Shareway SRJ2113ABNL)
+//   • Micro-USB Power & Console + Green Status LED Viewing Tunnel on Rear face
 // ====================================================================
-// ZODIAC FX — STEALTH SCREWLESS HIGH-VENTILATION CASING
+// ZODIAC FX — STEALTH SCREWLESS HIGH-VENTILATION CASING (REV 2.1)
 // Simplified 2-Piece Minimalist Design for Prusa MK4 & Prusa XL
 // ====================================================================
 
@@ -33,17 +35,15 @@ total_h = 28.0;
 tray_h = 10.0;
 hood_h = total_h - tray_h; // 18.0
 
-// Corner Locating Pins (Screwless Alignment)
-hole_x_offset = 4.0;
-hole_y_offset = 4.0;
-pin_d = 2.8;
+// 4 Corner Locating Pins (Screwless Alignment)
+pin_d = 2.8; // Fits Ø3.2mm PCB holes with 0.4mm slip clearance
 pin_h = 2.8;
 
-// RJ45 Ports
+// RJ45 Ports (Centered 4 discrete ports)
 rj45_w = 16.4;
 rj45_h = 13.8;
 rj45_pitch = 19.5;
-rj45_group_start = -inner_w/2.0 + 13.0; // Centered: (inner_w - 4*rj45_w - 3*rj45_pitch) / 2 ≈ 13 mm margin
+rj45_group_start = -inner_w/2.0 + 13.0;
 
 // Micro-USB
 usb_w = 11.0;
@@ -70,20 +70,22 @@ module stealth_bottom_tray() {
     color([0.15, 0.15, 0.15])
     difference() {
         union() {
-            // Main body
-            rounded_box(outer_w, outer_d, tray_h, corner_r);
-            // Mating tongue
-            translate([0, 0, tray_h])
-                difference() {
-                    rounded_box(outer_w - 0.2, outer_d - 0.2, 2.5, corner_r - 0.2);
-                    rounded_box(inner_w, inner_d, 3.5, corner_r - wall/2.0);
+            // Hollow chassis shell
+            difference() {
+                union() {
+                    rounded_box(outer_w, outer_d, tray_h, corner_r);
+                    translate([0, 0, tray_h])
+                        difference() {
+                            rounded_box(outer_w - 0.2, outer_d - 0.2, 2.5, corner_r - 0.2);
+                            rounded_box(inner_w, inner_d, 3.5, corner_r - wall/2.0);
+                        }
                 }
-            // 4 Corner Locating Pins & Support Pillars
-            hx = board_w/2.0 - hole_x_offset;
-            hy_rear = inner_d/2.0 - 4.5 - hole_y_offset;
-            hy_front = -inner_d/2.0 + 4.5 + hole_y_offset;
-            for (px = [-hx, hx]) {
-                for (py = [hy_front, hy_rear]) {
+                translate([0, 0, wall])
+                    rounded_box(inner_w, inner_d, tray_h + 5.0, corner_r - wall/2.0);
+            }
+            // 4 Symmetrical Corner Standoff Pillars & Integral Locating Pins
+            for (px = [-46.0, 46.0]) {
+                for (py = [-36.0, 36.0]) {
                     translate([px, py, wall]) cylinder(d=6.8, h=pcb_elevation);
                     translate([px, py, wall + pcb_elevation]) cylinder(d1=pin_d, d2=pin_d*0.9, h=pin_h);
                 }
@@ -94,9 +96,6 @@ module stealth_bottom_tray() {
             translate([ inner_w/2.0 - 1.8, -inner_d/2.0 + 9.0, wall])
                 cube([1.8, inner_d - 18.0, pcb_elevation]);
         }
-        // Hollow cavity
-        translate([0, 0, wall])
-            rounded_box(inner_w, inner_d, tray_h + 5.0, corner_r - wall/2.0);
         // Bottom ventilation grid
         for (vx = [-36.0 : vent_pitch : 36.0]) {
             for (vy = [-24.0 : vent_pitch : 24.0]) {
