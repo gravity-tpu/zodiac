@@ -24,9 +24,9 @@ lid_top_z = 25.80;    // top face Z
 wall_t    = 2.4;      // top skin to preserve
 
 // Ventilation grid
-vent_size  = 2.8;     // square hole (mm)
-vent_pitch = 4.5;     // center-to-center
-vent_margin = 7.0;    // edge keep-out
+vent_size  = 2.0;     // square hole (mm)
+vent_pitch = 3.0;     // center-to-center
+vent_margin = 6.0;    // edge keep-out
 vent_depth  = wall_t + 2.0;  // punch depth
 
 module vent_grid() {
