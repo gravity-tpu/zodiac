@@ -43,7 +43,7 @@ pin_h = 2.8;
 rj45_w = 16.4;
 rj45_h = 13.8;
 rj45_pitch = 19.5;
-rj45_group_start = -inner_w/2.0 + 13.0;
+rj45_group_start = -(1.5 * rj45_pitch); // Perfectly centered: ±13.05mm margins each side
 
 // Micro-USB
 usb_w = 11.0;
